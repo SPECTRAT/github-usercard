@@ -2,10 +2,6 @@
            (replacing the palceholder with your Github name):
            https://api.github.com/users/<your name>
 */
-axios.get('https://api.github.com/users/SPECTRAT')
-  .then((results) => {
-    console.log(results);
-  });
 
 
 
@@ -14,10 +10,10 @@ axios.get('https://api.github.com/users/SPECTRAT')
    data in order to use it to build your component function 
 
    Skip to Step 3.
-*/
+   */
 
 /* Step 4: Pass the data received from Github into your function, 
-           create a new component and add it to the DOM as a child of .cards
+create a new component and add it to the DOM as a child of .cards
 */
 
 /* Step 5: Now that you have your own card getting added to the DOM, either 
@@ -28,27 +24,27 @@ axios.get('https://api.github.com/users/SPECTRAT')
           
           Using that array, iterate over it, requesting data for each user, creating a new card for each
           user, and adding that card to the DOM.
-*/
-
-const followersArray = [];
-
-/* Step 3: Create a function that accepts a single object as its only argument,
-          Using DOM methods and properties, create a component that will return the following DOM element:
-
-<div class="card">
-  <img src={image url of user} />
+          */
+         
+         const followersArray = [];
+         
+         /* Step 3: Create a function that accepts a single object as its only argument,
+         Using DOM methods and properties, create a component that will return the following DOM element:
+         
+         <div class="card">
+         <img src={image url of user} />
   <div class="card-info">
-    <h3 class="name">{users name}</h3>
+  <h3 class="name">{users name}</h3>
     <p class="username">{users user name}</p>
     <p>Location: {users location}</p>
     <p>Profile:  
-      <a href={address to users github page}>{address to users github page}</a>
+    <a href={address to users github page}>{address to users github page}</a>
     </p>
     <p>Followers: {users followers count}</p>
     <p>Following: {users following count}</p>
     <p>Bio: {users bio}</p>
   </div>
-</div>
+  </div>
 */
 function gitCard(data) {
   //create elements
@@ -75,7 +71,7 @@ function gitCard(data) {
   follwers.textContent = `Followers: ${data.followers}`;
   following.textContent = `Following: ${data.following}`;
   bio.textContent = `Bio: ${data.bio}`;
-
+  
 
   //add styling classes
   card.classList.add('card');
@@ -96,6 +92,19 @@ function gitCard(data) {
   
   return card;
 }
+
+
+
+axios.get('https://api.github.com/users/SPECTRAT')
+  .then((results) => {
+    console.log(results.data);
+    const userCard = gitCard(results);
+    const entryPoint = document.querySelector('.cards');
+
+    entryPoint.appendChild(userCard);
+    
+    
+  });
 
 
 
