@@ -54,7 +54,7 @@ function gitCard(data) {
   //create elements
   const card = document.createElement('div');
   const userImg = document.createElement('img');
-  const info = document.createElement('div');
+  const cardInfo = document.createElement('div');
   const name = document.createElement('h3');
   const username = document.createElement('p');
   const location = document.createElement('p');
@@ -79,14 +79,24 @@ function gitCard(data) {
 
   //add styling classes
   card.classList.add('card');
-  info.classList.add('card-info');
+  cardInfo.classList.add('card-info');
   name.classList.add('name');
   username.classList.add('username');
   
   //append elements
-
+  card.appendChild(userImg);
+  card.appendChild(cardInfo);
+  cardInfo.appendChild(name);
+  cardInfo.appendChild(username);
+  cardInfo.appendChild(location);
+  cardInfo.appendChild(profile);
+  cardInfo.appendChild(follwers);
+  cardInfo.appendChild(following);
+  cardInfo.appendChild(bio);
+  
   return card;
 }
+
 
 
 /* List of LS Instructors Github username's: 
@@ -96,21 +106,3 @@ function gitCard(data) {
   luishrd
   bigknell
 */
-
-// function test() {
-//   const testDiv = document.createElement('div');
-//   const testP = document.createElement('p');
-//   const testLink = document.createElement('a');
-
-//   testLink.href = '#';
-//   testLink.textContent = `This is a link`; 
-//   testP.textContent = `Profile: ${testLink}`
-
-
-//   testDiv.appendChild(testP);
-
-//   console.log(testLink);
-//   return testDiv;
-// }
-
-// console.log(test());
