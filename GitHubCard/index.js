@@ -8,16 +8,15 @@
 /* Step 2: Inspect and study the data coming back, this is YOUR 
    github info! You will need to understand the structure of this 
    data in order to use it to build your component function 
-
-   Skip to Step 3.
    */
 
 /* Step 4: Pass the data received from Github into your function, 
 create a new component and add it to the DOM as a child of .cards
 */
 
+//TODO VVV
 /* Step 5: Now that you have your own card getting added to the DOM, either 
-          follow this link in your browser https://api.github.com/users/<Your github name>/followers 
+          follow this link in your browser https://api.github.com/users/spectrat/followers 
           , manually find some other users' github handles, or use the list found 
           at the bottom of the page. Get at least 5 different Github usernames and add them as
           Individual strings to the friendsArray below.
@@ -67,7 +66,7 @@ function gitCard(data) {
   location.textContent = data.location;
   profileLink.href = data.html_url;
   profileLink.textContent = data.html_url;
-  profile.textContent = `Profile: ${profileLink}`;
+  profile.textContent = `Profile: `;
   follwers.textContent = `Followers: ${data.followers}`;
   following.textContent = `Following: ${data.following}`;
   bio.textContent = `Bio: ${data.bio}`;
@@ -85,6 +84,7 @@ function gitCard(data) {
   cardInfo.appendChild(name);
   cardInfo.appendChild(username);
   cardInfo.appendChild(location);
+  profile.appendChild(profileLink);
   cardInfo.appendChild(profile);
   cardInfo.appendChild(follwers);
   cardInfo.appendChild(following);
@@ -98,12 +98,13 @@ function gitCard(data) {
 axios.get('https://api.github.com/users/SPECTRAT')
   .then((results) => {
     console.log(results.data);
-    const userCard = gitCard(results);
+
+    const userCard = gitCard(results.data);
+    console.log(gitCard(results.data));
+
     const entryPoint = document.querySelector('.cards');
 
     entryPoint.appendChild(userCard);
-    
-    
   });
 
 
@@ -115,3 +116,4 @@ axios.get('https://api.github.com/users/SPECTRAT')
   luishrd
   bigknell
 */
+//TODO ^^^^^ use in step 5 and create caards...
