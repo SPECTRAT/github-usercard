@@ -2,17 +2,12 @@
            (replacing the palceholder with your Github name):
            https://api.github.com/users/<your name>
 */
-axios.get('https://api.github.com/users/SPECTRAT');
-//*worked!
+axios.get('https://api.github.com/users/SPECTRAT')
+  .then((results) => {
+    console.log(results);
+  });
 
-console.log(axios.get('https://api.github.com/users/SPECTRAT'));
 
-let testUser = axios.get('https://api.github.com/users/SPECTRAT');
-
-console.log(testUser);
-
-console.log(typeof testUser);
-console.log();
 
 /* Step 2: Inspect and study the data coming back, this is YOUR 
    github info! You will need to understand the structure of this 
@@ -56,12 +51,41 @@ const followersArray = [];
 </div>
 */
 function gitCard(data) {
+  //create elements
   const card = document.createElement('div');
-  card.classList.add('card');
-
   const userImg = document.createElement('img');
-  //userImg.setAttribute('src', data.avatar);
+  const info = document.createElement('div');
+  const name = document.createElement('h3');
+  const username = document.createElement('p');
+  const location = document.createElement('p');
+  const profile = document.createElement('p');
+  const profileLink = document.createElement('a');
+  const follwers = document.createElement('p');
+  const following = document.createElement('p');
+  const bio = document.createElement('p');
+  
+  //add context
+  userImg.src = data.avatar_url;
+  name.textContent = data.name;
+  username.textContent = data.login;
+  location.textContent = data.location;
+  profileLink.href = data.html_url;
+  profileLink.textContent = data.html_url;
+  profile.textContent = `Profile: ${profileLink}`;
+  follwers.textContent = `Followers: ${data.followers}`;
+  following.textContent = `Following: ${data.following}`;
+  bio.textContent = `Bio: ${data.bio}`;
 
+
+  //add styling classes
+  card.classList.add('card');
+  info.classList.add('card-info');
+  name.classList.add('name');
+  username.classList.add('username');
+  
+  //append elements
+
+  return card;
 }
 
 
@@ -72,3 +96,21 @@ function gitCard(data) {
   luishrd
   bigknell
 */
+
+// function test() {
+//   const testDiv = document.createElement('div');
+//   const testP = document.createElement('p');
+//   const testLink = document.createElement('a');
+
+//   testLink.href = '#';
+//   testLink.textContent = `This is a link`; 
+//   testP.textContent = `Profile: ${testLink}`
+
+
+//   testDiv.appendChild(testP);
+
+//   console.log(testLink);
+//   return testDiv;
+// }
+
+// console.log(test());
