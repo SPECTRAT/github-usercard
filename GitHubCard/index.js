@@ -51,6 +51,9 @@ function gitCard(data) {
   const bio = document.createElement('p');
   const extendBox = document.createElement('div');
   const extendInfo = document.createElement('p');
+  const cardButtons = document.createElement('div');
+  const buttonClosed = document.createElement('button');
+  const buttonOpen = document.createElement('button');
   
   //add context
   userImg.src = data.avatar_url;
@@ -63,6 +66,9 @@ function gitCard(data) {
   follwers.textContent = `Followers: ${data.followers}`;
   following.textContent = `Following: ${data.following}`;
   bio.textContent = `Bio: ${data.bio}`;
+  buttonClosed.textContent = 'c';
+  buttonOpen.textContent = '\u25bd';
+  buttonClosed.textContent = '\u25b3'
   extendInfo.textContent = `Nori grape silver beet broccoli kombu beet greens fava bean potato quandong celery. Bunya nuts black-eyed pea prairie turnip leek lentil turnip greens parsnip. Sea lettuce lettuce water chestnut eggplant winter purslane fennel azuki bean earthnut pea sierra leone bologi leek soko chicory celtuce parsley jícama salsify.`;
   
   //add styling classes
@@ -70,10 +76,16 @@ function gitCard(data) {
   cardInfo.classList.add('card-info');
   name.classList.add('name');
   username.classList.add('username');
+  cardButtons.classList.add('card-buttons');
+  buttonClosed.classList.add('hide');
+  extendInfo.classList.add('extend-info');
   
   //append elements
   card.appendChild(userImg);
   card.appendChild(cardInfo);
+  bio.appendChild(cardButtons);
+  cardButtons.appendChild(buttonClosed);
+  cardButtons.appendChild(buttonOpen);
   cardInfo.appendChild(name);
   cardInfo.appendChild(username);
   cardInfo.appendChild(location);
