@@ -12,9 +12,9 @@ github info! You will need to understand the structure of this data in order to 
   
   <div class="card">
   <img src={image url of user} />
-  <div class="card-info">
-    <h3 class="name">{users name}</h3>
-    <p class="username">{users user name}</p>
+    <div class="card-info">
+      <h3 class="name">{users name}</h3>
+      <p class="username">{users user name}</p>
       <p>Location: {users location}</p>
       <p>Profile:  
       <a href={address to users github page}>{address to users github page}</a>
@@ -22,8 +22,8 @@ github info! You will need to understand the structure of this data in order to 
       <p>Followers: {users followers count}</p>
       <p>Following: {users following count}</p>
       <p>Bio: {users bio}</p>
-      </div>
     </div>
+  </div>
   */
  
  /* Step 4: Pass the data received from Github into your function, 
@@ -49,6 +49,8 @@ function gitCard(data) {
   const follwers = document.createElement('p');
   const following = document.createElement('p');
   const bio = document.createElement('p');
+  const extendBox = document.createElement('div');
+  const extendInfo = document.createElement('p');
   
   //add context
   userImg.src = data.avatar_url;
@@ -61,7 +63,7 @@ function gitCard(data) {
   follwers.textContent = `Followers: ${data.followers}`;
   following.textContent = `Following: ${data.following}`;
   bio.textContent = `Bio: ${data.bio}`;
-  
+  extendInfo.textContent = `Nori grape silver beet broccoli kombu beet greens fava bean potato quandong celery. Bunya nuts black-eyed pea prairie turnip leek lentil turnip greens parsnip. Sea lettuce lettuce water chestnut eggplant winter purslane fennel azuki bean earthnut pea sierra leone bologi leek soko chicory celtuce parsley jícama salsify.`;
   
   //add styling classes
   card.classList.add('card');
@@ -80,6 +82,10 @@ function gitCard(data) {
   cardInfo.appendChild(follwers);
   cardInfo.appendChild(following);
   cardInfo.appendChild(bio);
+  cardInfo.appendChild(extendBox);
+  extendBox.appendChild(extendInfo);
+  //TODO  Add a toggle extend and colapse effect for extend box and info, add a top margin for extended info area and an 'additional info' button for toggle.
+  //TODO if extend toggle works, look into adding each user's github chart for the extend rather than dummy text. This is a maybe.
   
   return card;
 }
@@ -101,22 +107,27 @@ axios.get('https://api.github.com/users/SPECTRAT')
 const followersArray = [
   'chrisgins',
   'tetondan',
-  'dustimmyers',
+  'dustinmyers',
   'justsml',
   'luishrd',
   'bigknell',
 ];
 
-followersArray.forEach(myFunction); 
+followersArray.forEach(followerCards); 
 
-function myFunction(user) {
-  console.log(user);
+function followerCards(user) {
+  axios.get(`https://api.github.com/users/${user}`)
+    .then((results) => {
+      console.log(results.data);
+      const userCard = gitCard(results.data);
+    const entryPoint = document.querySelector('.cards');
+    entryPoint.appendChild(userCard);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 }
   
-
-  
-
-
   /* List of LS Instructors Github username's: 
   tetondan
   dustinmyers
