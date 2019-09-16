@@ -98,6 +98,12 @@ function gitCard(data) {
   extendBox.appendChild(extendInfo);
   //TODO  Add a toggle extend and colapse effect for extend box and info, add a top margin for extended info area and an 'additional info' button for toggle.
   //TODO if extend toggle works, look into adding each user's github chart for the extend rather than dummy text. This is a maybe.
+
+  //event handlers
+  cardButtons.addEventListener('click', (event) => {
+    buttonOpen.classList.toggle('hide');
+    buttonClosed.classList.toggle('hide');
+  })
   
   return card;
 }
