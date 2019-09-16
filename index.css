@@ -144,14 +144,9 @@ body {
   display: none;
 }
 
-.toggle-on {
-  display: block;
-}
-
 .extend-info {
-  margin-top: 10px;
-  font-style: italic;
-  display: none;
+  margin-top: 15px;
+  font-style: italic;  
 }
 
 

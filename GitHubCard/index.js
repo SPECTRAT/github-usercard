@@ -78,7 +78,7 @@ function gitCard(data) {
   username.classList.add('username');
   cardButtons.classList.add('card-buttons');
   buttonClosed.classList.add('hide');
-  extendInfo.classList.add('extend-info');
+  extendInfo.classList.add('extend-info', 'hide');
   
   //append elements
   card.appendChild(userImg);
@@ -96,17 +96,18 @@ function gitCard(data) {
   cardInfo.appendChild(bio);
   cardInfo.appendChild(extendBox);
   extendBox.appendChild(extendInfo);
-  //TODO  Add a toggle extend and colapse effect for extend box and info, add a top margin for extended info area and an 'additional info' button for toggle.
-  //TODO if extend toggle works, look into adding each user's github chart for the extend rather than dummy text. This is a maybe.
-
+  
   //event handlers
   cardButtons.addEventListener('click', (event) => {
     buttonOpen.classList.toggle('hide');
     buttonClosed.classList.toggle('hide');
+    extendInfo.classList.toggle('hide');
   })
   
   return card;
 }
+
+//TODO if extend toggle works, look into adding each user's github chart for the extend rather than dummy text. 
 
 
 
