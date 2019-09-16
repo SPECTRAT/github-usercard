@@ -126,6 +126,8 @@ body {
 /*Stretch extend card code starts here*/
 .card-buttons {
   display: flex;
+  align-items: flex-end;
+  margin-left: 35%;
 }
 
 .card-buttons button {
@@ -136,8 +138,6 @@ body {
   border: none;
   border-radius: 50%;
   padding: 5px;
-  padding-left: 95%
-  /* margin-top: 90px */
 }
 
 .hide {
@@ -151,6 +151,7 @@ body {
 .extend-info {
   margin-top: 10px;
   font-style: italic;
+  display: none;
 }
 
 

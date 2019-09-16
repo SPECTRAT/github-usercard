@@ -83,7 +83,7 @@ function gitCard(data) {
   //append elements
   card.appendChild(userImg);
   card.appendChild(cardInfo);
-  bio.appendChild(cardButtons);
+  card.appendChild(cardButtons);
   cardButtons.appendChild(buttonClosed);
   cardButtons.appendChild(buttonOpen);
   cardInfo.appendChild(name);
