@@ -111,7 +111,7 @@ function gitCard(data) {
 
 
 
-axios.get('https://api.github.com/users/SPECTRAT')
+axios.get('https://api.github.com/users/aleeshaw')
   .then((results) => {
     console.log(results.data);
     const userCard = gitCard(results.data);
@@ -132,21 +132,21 @@ const followersArray = [
   'bigknell',
 ];
 
-followersArray.forEach(followerCards); 
 
 function followerCards(user) {
   axios.get(`https://api.github.com/users/${user}`)
-    .then((results) => {
-      console.log(results.data);
-      const userCard = gitCard(results.data);
+  .then((results) => {
+    console.log(results.data);
+    const userCard = gitCard(results.data);
     const entryPoint = document.querySelector('.cards');
     entryPoint.appendChild(userCard);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+  })
+  .catch((error) => {
+    console.log(error);
+  });
 }
-  
+
+followersArray.forEach(followerCards); 
   /* List of LS Instructors Github username's: 
   tetondan
   dustinmyers
